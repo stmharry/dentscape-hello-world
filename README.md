@@ -20,16 +20,17 @@ This document outlines the recommended best practices for the engineering teams 
   - [GitHub Actions (Build & Deploy)](#github-actions-build-deploy)
 - [Modularity](#modularity)
   - [Polyrepo Approach](#polyrepo-approach)
+- [AI Testimony](#ai-testimony)
 
 ## Consistency of Development
 
 ### IDE / Editor Setup
 
 - Editor choice is up to you. Popular options include:
-  - VSCode — extensive plugin ecosystem.
-  - PyCharm — rich Python-specific support.
-  - Cursor — explore rules at [`PatrickJS/awesome-cursorrules`](https://github.com/PatrickJS/awesome-cursorrules)
-  - Neovim — example config at [`stmharry/stmharry-config:astronvim/nvim`](https://github.com/stmharry/stmharry-config/tree/main/astronvim/nvim)
+  - [Neovim](https://neovim.io) — example config at [`stmharry/stmharry-config:astronvim/nvim`](https://github.com/stmharry/stmharry-config/tree/main/astronvim/nvim)
+  - [Cursor](https://www.cursor.com) — explore rules at [`PatrickJS/awesome-cursorrules`](https://github.com/PatrickJS/awesome-cursorrules)
+  - [VSCode](https://code.visualstudio.com) — extensive plugin ecosystem.
+  - [PyCharm](https://www.jetbrains.com/pycharm/) — rich Python-specific support.
 - Recommended features (via plugins/extensions):
   - Linting (e.g., flake8, pylint) for code quality.
   - Formatting (e.g., black, isort) for consistent style.
@@ -39,6 +40,23 @@ This document outlines the recommended best practices for the engineering teams 
 ### Pre-commit Hooks (Linters, Formatters, Type Checking, Pytest)
 
 Pre-commit hooks ensure code quality and consistency before each commit.
+
+#### Installation
+
+- Project site: [https://pre-commit.com](https://pre-commit.com)
+- Install pre-commit using `uv`:
+  ```sh
+  uv tool install pre-commit
+  ```
+- Add a `.pre-commit-config.yaml` file (see example below for Python).
+- Install the pre-commit hooks. Once installed, the hooks will run automatically on each commit:
+  ```sh
+  uvx pre-commit install
+  ```
+- (Optional) Run hooks against all existing files:
+  ```sh
+  uvx pre-commit run --all-files
+  ```
 
 #### Example `.pre-commit-config.yaml`:
 
@@ -114,6 +132,7 @@ Brief explanations:
 
 ### Git Flow (Branching Strategy)
 
+- Development is done on the `dev` branch. Check out from `dev` for all feature, fix, and refactor work.
 - Branch naming convention using `<type>/<description>`:
   - `dev/<name>` for general development.
   - `feature/<feature-name>` for new features.
@@ -121,8 +140,8 @@ Brief explanations:
   - `refactor/<area>` for code refactoring.
   - `chore/<task>` for maintenance tasks.
   - `release/<version>` to prepare a release.
-- Use `main` branch for stable releases.
-- After PR approval and passing checks, merge into `main`.
+- Merge changes from feature/fix branches into `dev` via pull requests.
+- Releases are created by merging `dev` into `main` after all changes are reviewed and tested.
 - Tag release commits on `main` with semantic versioning (e.g., `v1.0.0`, `v1.2.3`).
 
 ## Maintainability
@@ -314,3 +333,11 @@ Brief explanations:
   - [`AIDirect/dentscape-core`](https://github.com/AIDirect/dentscape-core): Mesh operations, AI model inference, Apache Beam integration.
   - [`AIDirect/py-clr`](https://github.com/AIDirect/py-clr): Python bindings for 3shape DLLs.
 - Benefits: separation of concerns, independent versioning, easier dependency management.
+
+## AI Testimony
+
+- [`AIDirect/pointops`](https://github.com/AIDirect/pointops):
+  A CPU port of an originally CUDA-only implementation, developed almost entirely using OpenAI Codex.
+
+- [`AIDirect/py-clr/scripts/codegen.py`](https://github.com/AIDirect/py-clr/blob/main/scripts/codegen.py):
+  A stub-generating script that takes DLLs and generates Python interfaces, also implemented using OpenAI Codex.
