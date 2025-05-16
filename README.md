@@ -4,17 +4,17 @@ This repository demonstrates best practices for project documentation, developme
 
 ## Table of Contents
 
-- [General Concepts](#general-concepts)
+- General Concepts
   - [Polyrepo Approach](#polyrepo-approach)
   - [Documentation and Maintainability](#documentation-and-maintainability)
   - [Consistency of Development](#consistency-of-development)
 - [Git Flow](#git-flow)
-  - [`AIDirect/flask-server`](#aidirectflask-server)
+  - [`AIDirect/flask-server`](#aidirectflaskserver)
   - [`AIDirect/dental3d`](#aidirectdental3d)
   - [General Branch Naming Conventions](#general-branch-naming-conventions)
 - [Tool Setup](#tool-setup)
   - [IDE / Editor Setup](#ide--editor-setup)
-  - [Pre-commit Hooks (Linters, Formatters, Type Checking, Pytest)](#pre-commit-hooks-linters-formatters-type-checking-pytest)
+  - [Pre-commit Hooks (Linters, Formatters, Type Checking, Pytest)](#precommit-hooks-linters-formatters-type-checking-pytest)
   - [UV (Python Environment)](#uv-python-environment)
   - [AI Tools](#ai-tools)
 
