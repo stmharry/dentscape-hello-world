@@ -4,7 +4,7 @@ This repository demonstrates best practices for project documentation, developme
 
 ## Table of Contents
 
-- General Concepts
+- [General Concepts](#general-concepts)
   - [Polyrepo Approach](#polyrepo-approach)
   - [Documentation and Maintainability](#documentation-and-maintainability)
   - [Consistency of Development](#consistency-of-development)
@@ -54,7 +54,7 @@ Dentscape employs a [polyrepo](https://github.com/joelparkerhenderson/monorepo-v
 
 - Write concise, self-explanatory code; avoid excessive inline comments.
   “Good docs are clear and to the point.”
-  <a target="_blank" href="https://www.youtube.com/watch?v=Bf7vDBBOBUA">
+  <a href="https://www.youtube.com/watch?v=Bf7vDBBOBUA" target="_blank">
     <img src="https://img.youtube.com/vi/Bf7vDBBOBUA/0.jpg"/>
   </a>
 - Add docstrings and type annotations
@@ -69,7 +69,7 @@ Dentscape employs a [polyrepo](https://github.com/joelparkerhenderson/monorepo-v
 - Using AI tools to draft and iterate on documentation can be very helpful.
 - Good example: [`AIDirect/py-clr:README.md`](https://github.com/AIDirect/py-clr/blob/main/README.md)
 
-#### Reference Prompt for README Generation ([`README_GENERATION_PROMPT.md`](README_GENERATION_PROMPT.md)).
+#### Reference Prompt for README Generation ([`README_GENERATION_PROMPT.md`](README_GENERATION_PROMPT.md))
 
 Use the following prompt with OpenAI Codex to generate a README file.
 
@@ -237,7 +237,7 @@ Here's a quick look at the development workflow for the two main repositories.
   - Merge `release` into `main`
   - Update the [version table](https://www.notion.so/830b21019ca74b4884b69c780d82dcb5?v=e62a7cdaf3b2431da3a99b8667bf087c&pvs=4) for production release
 
-```
+```mermaid
 flowchart TD
   subgraph Branches
     Main(main)
@@ -285,7 +285,7 @@ flowchart TD
   - Open a PR into `main`
   - After review, merge into `main`, then merge `main` into `dev`
 
-```
+```mermaid
 flowchart TD
   subgraph Branches
     Main(main)
@@ -347,7 +347,7 @@ Pre-commit hooks ensure code quality and consistency before each commit.
   uvx pre-commit run --all-files
   ```
 
-#### Example `.pre-commit-config.yaml`:
+#### Example Config ([`.pre-commit-config.yaml`](.pre-commit-config.yaml))
 
 ```yaml
 repos:
