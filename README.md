@@ -351,67 +351,38 @@ Pre-commit hooks ensure code quality and consistency before each commit.
 
 ```yaml
 repos:
-- repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.6.0
-  hooks:
-    - id: end-of-file-fixer
-    - id: trailing-whitespace
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.11.10
+    hooks:
+      - id: ruff-check
+        types_or: [ python, pyi ]
+        args: [ --fix ]
+      - id: ruff-format
+        types_or: [ python, pyi ]
 
-- repo: https://github.com/myint/autoflake
-  rev: v2.3.1
-  hooks:
-    - id: autoflake
-      exclude: .*/__init__.py
-      args:
-        - --in-place
-        - --remove-all-unused-imports
-        - --expand-star-imports
-        - --remove-duplicate-keys
-        - --remove-unused-variables
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy
+        language: system
+        entry: uv run mypy
+        types_or: [ python, pyi ]
+        args: [ --ignore-missing-imports ]
 
-- repo: https://github.com/pre-commit/mirrors-isort
-  rev: v5.10.1
-  hooks:
-    - id: isort
-      args:
-        - --profile
-        - black
-
-- repo: https://github.com/psf/black
-  rev: 25.1.0
-  hooks:
-    - id: black
-      args:
-        - --preview
-        - --enable-unstable-feature=string_processing
-        - --enable-unstable-feature=hug_parens_with_braces_and_square_brackets
-        - --line-length=88
-
-- repo: https://github.com/pre-commit/mirrors-mypy
-  rev: v1.14.1
-  hooks:
-    - id: mypy
-      language: system
-      types_or:
-        - python
-        - pyi
-      args:
-        - --ignore-missing-imports
-
-- repo: local
-  hooks:
-    - id: pytest
-      name: pytest
-      entry: pytest
-      language: system
-      types: [python]
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest
+        language: system
+        entry: uv run pytest --maxfail=1 --disable-warnings -q
+        pass_filenames: false
+        always_run: true
 ```
 
 Brief explanations:
-- **pre-commit-hooks**: basic file cleanup (EOF fixes, whitespace).
-- **autoflake**: remove unused imports and variables.
-- **isort**: sort imports (Black profile).
-- **black**: enforce code formatting.
+
+- **ruff-check**: lint and automatically fix code style issues.
+- **ruff-format**: format Python code.
 - **mypy**: static type checking.
 - **pytest**: run tests before commit.
 
