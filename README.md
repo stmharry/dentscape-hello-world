@@ -16,6 +16,7 @@ This repository demonstrates best practices for project documentation, developme
   - [IDE / Editor Setup](#ide--editor-setup)
   - [Pre-commit Hooks (Linters, Formatters, Type Checking, Pytest)](#precommit-hooks-linters-formatters-type-checking-pytest)
   - [UV (Python Environment)](#uv-python-environment)
+  - [Git Configuration (.gitconfig)](#git-configuration-gitconfig)
   - [AI Tools](#ai-tools)
 
 ## Polyrepo Approach
@@ -390,6 +391,21 @@ Brief explanations:
 
 - Use [UV Package Manager](https://github.com/indygreg/uv) to initialize projects, manage Python versions, create virtualenvs, and handle dependencies in `pyproject.toml`.
 - Example: [`AIDirect/flask-server:pyproject.toml`](https://github.com/AIDirect/flask-server/blob/main/pyproject.toml)
+
+### Git Configuration ([`.gitconfig`](.gitconfig))
+
+This repository includes a recommended Git configuration file, `.gitconfig`, which sets up:
+
+- Default branch name (`init.defaultBranch = main`).
+- Core editor (`core.editor = nvim`) and pager (`core.pager = delta`) for enhanced diffs.
+- Commit message template (`~/.gitmessage.txt`) and GPG signing (`gpgsign = true`).
+- Handy aliases for common Git commands (e.g., `git a`, `git ap`, `git ll`).
+- Diff tool (`vimdiff`) and rich color schemes for branch, diff, and status.
+- [delta](https://github.com/dandavison/delta)-specific styling under the `delta` section.
+
+To apply these settings, copy the `.gitconfig` file to your home directory:
+
+Ensure you have `nvim`, `delta`, and `vimdiff` installed to take full advantage of this configuration.
 
 ### AI Tools
 
